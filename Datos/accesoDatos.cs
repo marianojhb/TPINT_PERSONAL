@@ -28,18 +28,55 @@ namespace Datos
             }
         }
 
-        private DataTable obtenerTabla ()
+        private SqlDataAdapter obtenerAdaptador(string consulta, SqlConnection conn)
         {
-            return null;
+            SqlDataAdapter adapter;
+            try
+            {
+                adapter = new SqlDataAdapter(consulta, conn);
+                return adapter;
+            }
+            catch (Exception err)
+            {
+                return null;
+            }
         }
 
+        private DataTable obtenerTabla(string nombreTabla, string consultaSql)
+        {
+            DataSet ds = new DataSet();
+            SqlConnection sqlConnection = obtenerConexion();
+            SqlDataAdapter adapter = obtenerAdaptador(consultaSql, sqlConnection);
+            adapter.Fill(ds);
+            sqlConnection.Close();
+            return ds.Tables[nombreTabla];
+        }
 
+        public int ejecutarProcedimientosAlmacenados(SqlCommand comando, string nombreSP)
+        {
+            int filasCambiadas = 0;
+            SqlConnection sqlConnection = obtenerConexion();
+            SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand = comando;
+            sqlCommand.Connection = sqlConnection;
+            sqlCommand.CommandType = CommandType.StoredProcedure;
+            sqlCommand.CommandText = nombreSP;
+            filasCambiadas = sqlCommand.ExecuteNonQuery();
+            sqlConnection.Close();
+            return filasCambiadas;
+        }
+        public Boolean existe(String consulta)
+        {
+            Boolean estado = false;
+            SqlConnection Conexion = obtenerConexion();
+            SqlCommand cmd = new SqlCommand(consulta, Conexion);
+            SqlDataReader datos = cmd.ExecuteReader();
+            if (datos.Read())
+            {
+                estado = true;
+            }
+            return estado;
+        }
 
-        // el adaptador
-
-        // la conexion y obtener conexion
-
-
-        // crear una acceso a conexion a una bbdd
     }
 }
