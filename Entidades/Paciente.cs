@@ -9,11 +9,7 @@ namespace Entidades
 {
     public class Paciente : Persona
     {
-        private string _observacion; 
-        public Paciente() { }
-        public string getObservacion()
-            { return _observacion; }
-        public void setObservacion(string observacion)
-        { _observacion = observacion; }
+        public string Observacion { get; set; }
+        public string Estado { get; set; }
     }
-}
+}   

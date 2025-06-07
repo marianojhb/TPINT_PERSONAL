@@ -6,15 +6,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using Entidades;
 
 namespace Datos
 {
-    public class accesoDatos
+    public class AccesoDatos
     {
-        private const string cadenaConexion = @"Data Source=MABELO360\SQLEXPRESS;Initial Catalog=BDClinica;Integrated Security=True;Trust Server Certificate=True";
-        public accesoDatos() { } // constructor por defecto
+        private const string cadenaConexion = @"Data Source=MABELO360\SQLEXPRESS;Initial Catalog=TPINT_PERSONAL;Integrated Security=True;TrustServerCertificate=True";
 
-        private SqlConnection obtenerConexion()
+        public SqlConnection obtenerConexion()
         {
             SqlConnection sqlConnection = new SqlConnection(cadenaConexion);
             try
@@ -28,7 +28,7 @@ namespace Datos
             }
         }
 
-        private SqlDataAdapter obtenerAdaptador(string consulta, SqlConnection conn)
+        public SqlDataAdapter obtenerAdaptador(string consulta, SqlConnection conn)
         {
             SqlDataAdapter adapter;
             try
@@ -65,7 +65,7 @@ namespace Datos
             sqlConnection.Close();
             return filasCambiadas;
         }
-        public Boolean existe(String consulta)
+        public Boolean Existe(String consulta)
         {
             Boolean estado = false;
             SqlConnection Conexion = obtenerConexion();
@@ -76,6 +76,33 @@ namespace Datos
                 estado = true;
             }
             return estado;
+        }
+
+        public Persona GetPersona(string usuario)
+        {
+            Persona persona = new Persona();
+            string consulta = "SELECT * FROM USUARIOS WHERE usuario_U = '" + usuario + "' ";
+            SqlCommand comando = new SqlCommand();
+            comando.CommandText = consulta;
+            comando.Connection = obtenerConexion();
+            SqlDataReader data = comando.ExecuteReader();
+            if (data.Read())
+            {
+                persona.Nombre = data["nombre_U"].ToString();
+                persona.Apellido = data["apellido_U"].ToString();
+                persona.DNI = data["dni_U"].ToString();
+                persona.Tipo = data["tipo_U"].ToString();
+                persona.Sexo = data["sexo_U"].ToString()[0];
+                persona.Nacionalidad = data["nacionalidad_U"].ToString();
+                persona.FechaNac = data["fechaNac_U"].ToString();
+                persona.IdLocalidad = Convert.ToInt32(data["idLocalidad_U"]);
+                persona.IdProvincia = Convert.ToInt32(data["idProvincia_U"]);
+                persona.Email = data["email_U"].ToString();
+                persona.Telefono = data["telefono_U"].ToString();
+                persona.Username = data["usuario_U"].ToString();
+                persona.Password = data["password_U"].ToString();
+            }
+            return persona;
         }
 
     }
