@@ -11,17 +11,17 @@
 
     <label for="txtNombre" class="col-sm-4 col-form-label">Nombre</label>
     <div class="col-sm-8">
-        <input type="text" class="form-control" id="txtNombre" placeholder="Nombre">
+        <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" placeholder="Nombre" />
     </div>
 
     <label for="txtApellido" class="col-sm-4 col-form-label">Apellido</label>
     <div class="col-sm-8">
-        <input type="text" class="form-control" id="txtApellido" placeholder="Apellido">
+        <asp:TextBox ID="txtApellido" runat="server" CssClass="form-control" placeholder="Apellido" />
     </div>
 
     <label for="txtDni" class="col-sm-4 col-form-label">DNI</label>
     <div class="col-sm-8">
-        <input type="text" class="form-control" id="txtDni" placeholder="DNI">
+        <asp:TextBox ID="txtDni" runat="server" CssClass="form-control" placeholder="DNI" />
     </div>
 
   <fieldset class="form-group">
@@ -48,7 +48,7 @@
 
     <label for="txtNacionalidad" class="col-sm-4 col-form-label">Nacionalidad</label>
     <div class="col-sm-8">
-        <input type="text" class="form-control" id="txtNacionalidad" placeholder="Nacionalidad">
+        <asp:TextBox ID="txtNacionalidad" runat="server" CssClass="form-control" placeholder="Nacionalidad" />
     </div>
 
     <label for="ddlProvincias" class="col-sm-4 col-form-label">Provincia</label>
@@ -69,42 +69,49 @@
             <label for="txtFechaNac"  class="col-sm-4 col-form-label">Fecha de Nacimiento</label>
         <div class="col-sm-8">
             <asp:TextBox ID="txtFechaNac" runat="server" CssClass="form-control datepicker" placeholder="Fecha de Nacimiento" />
+            
         </div>
 
    
 
     <label for="txtEmail" class="col-sm-4 col-form-label">Email</label>
     <div class="col-sm-8">
-        <input type="email" class="form-control" id="txtEmail" placeholder="Email">
+        <asp:TextBox TextMode="Email" ID="txtEmail" runat="server" CssClass="form-control" placeholder="Email" />
+
     </div>
 
 
     <label for="txtTelefono" class="col-sm-4 col-form-label">Telefono</label>
     <div class="col-sm-8">
-        <input type="text" class="form-control" id="txtTelefono" placeholder="Telefono">
+        <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control datepicker" placeholder="Telefono" />
+
     </div>
 
     <label for="txtUsername" class="col-sm-4 col-form-label">Nombre de usuario</label>
     <div class="col-sm-8">
-        <input type="text" class="form-control" id="txtUsername" placeholder="Username">
+        <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control" placeholder="Username" />
     </div>
 
     <label for="txtPassword" class="col-sm-4 col-form-label">Contraseña</label>
     <div class="col-sm-8">
-        <input type="password" class="form-control" id="txtPassword" placeholder="Password" aria-describedby="passwordHelpBlock">
+        <asp:TextBox TextMode="Password" ID="txtPassword" runat="server" CssClass="form-control" placeholder="Contraseña" aria-describedby="passwordHelpBlock" autocomplete="new-password"/>
         <small id="passwordHelpBlock" class="form-text text-muted">
             La contraseña debe tener entre 8 y 20 caracteres, contener letra y números, sin espacios, caracteres especiales o emoji.</small>
     </div>
+
  </div>
 
 
 
 
-  <div class="form-group row">
-    <div class="col-sm-10">
-      <button type="submit" class="btn btn-primary">Guardar</button> 
-    </div>
+<div class="form-group row">
+  <div class="col-sm-12 text-center mt-3">
+    <asp:Button ID="btnReset" runat="server" CssClass="btn btn-secondary mx-2" Text="Limpiar" OnClick="btnReset_Click" />
+    <asp:Button ID="btnGuardar" runat="server" CssClass="btn btn-primary mx-2" Text="Guardar" OnClick="btnGuardar_Click" />
   </div>
+</div>
+
+
  </div> <%--endform --%>
 
     <script>

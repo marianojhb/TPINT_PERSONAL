@@ -52,5 +52,22 @@ namespace TPINT_PERSONAL
         {
             cargarLocalidades(ddlProvincias.SelectedValue);
         }
+
+        protected void btnReset_Click(object sender, EventArgs e)
+        {
+            ddlProvincias.SelectedValue = "0";
+            ddlLocalidades.SelectedValue = "0";
+            txtFechaNac.Text = String.Empty;
+        }
+
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            // Preparo un objeto Medico
+            // El numero de Legajo se genera automáticamente
+
+            Medico medico = new Medico();
+
+            
+        }
     }
 }
