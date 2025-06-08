@@ -13,7 +13,7 @@ namespace Negocio
         public Persona GetPersona(Persona p)
         {
             DaoPersona daoPersona = new DaoPersona();
-            
+
             return daoPersona.GetPersona(p);
         }
     }

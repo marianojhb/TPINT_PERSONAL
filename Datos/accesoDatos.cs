@@ -12,7 +12,7 @@ namespace Datos
 {
     public class AccesoDatos
     {
-        private const string cadenaConexion = @"Data Source=MABELO360\SQLEXPRESS;Initial Catalog=TPINT_PERSONAL;Integrated Security=True;TrustServerCertificate=True";
+        private const string cadenaConexion = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=TPINT_PERSONAL;Integrated Security=True;TrustServerCertificate=True";
 
         public SqlConnection obtenerConexion()
         {
@@ -78,11 +78,12 @@ namespace Datos
             return estado;
         }
 
-        public Persona GetPersona(string usuario)
+        public Persona GetPersona(Persona p)
         {
             Persona persona = new Persona();
-            string consulta = "SELECT * FROM USUARIOS WHERE usuario_U = '" + usuario + "' ";
+            string consulta = "SELECT * FROM USUARIOS WHERE usuario_U = @usuario ";
             SqlCommand comando = new SqlCommand();
+            comando.Parameters.AddWithValue("@usuario", p.Username);
             comando.CommandText = consulta;
             comando.Connection = obtenerConexion();
             SqlDataReader data = comando.ExecuteReader();

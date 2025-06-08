@@ -24,25 +24,31 @@ namespace TPINT_PERSONAL
             Usuario u = new Usuario(txtUsuario.Text, txtPassword.Text);
             NegocioPersona negPersona = new NegocioPersona();
             Persona persona = new Persona();
-            persona.Username = txtUsuario.Text;
+            
 
 
             bool accesoAprobado = login.LoginOK(u);
 
             if (accesoAprobado)
             {
-                // consultar que tipo de usuario es y de paso traer el nombre
+                // Si hay una persona logueada, muestro cartel de Cerrar Sesión
+                Master.FindControl("cerrarSesion").Visible = true;
 
+                // Guardo el nombre de usuario logueado en una variable de sesión para usar en toda la app
                 Session["Usuario"] = txtUsuario.Text;
 
+
+                // Busco datos de la persona que se logueó:
+                persona.Username = txtUsuario.Text;
+                persona = negPersona.GetPersona(persona);
+                Session["FullName"] = persona.Nombre;
+
+
+                // Busco el rol de la persona logueada para ver a donde la redirijo
                 Persona personaRole = new Persona();
                 personaRole.Username = txtUsuario.Text;
                 string tipo = login.GetRole(personaRole);
-                persona = negPersona.GetPersona(persona);
-                Session["Tipo"] = tipo;
-                Session["FullName"] = persona.Nombre + " " + persona.Apellido;
 
-                Master.FindControl("cerrarSesion").Visible = true;
                 if (tipo == "01")
                 {
                 Response.Redirect("~/Administrador.aspx", false);

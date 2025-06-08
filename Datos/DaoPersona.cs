@@ -14,7 +14,7 @@ namespace Datos
         public Persona GetPersona (Persona p)
         {
             Persona persona = new Persona();
-            persona = ac.GetPersona(p.Username);
+            persona = ac.GetPersona(p);
             return persona;
         }
         

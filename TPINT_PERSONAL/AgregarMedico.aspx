@@ -26,6 +26,7 @@
 
   <fieldset class="form-group">
     <div class="row">
+      <div>
       <legend class="col-form-label col-sm-4 pt-0">Sexo</legend>
       <div class="col-sm-8">
         <div class="form-check">
@@ -50,7 +51,13 @@
         <input type="text" class="form-control" id="txtNacionalidad" placeholder="Nacionalidad">
     </div>
  
+    <asp:DropDownList ID="ddlProvincia" runat="server" CssClass="form-select" AutoPostBack="True" OnSelectedIndexChanged="ddlProvincia_SelectedIndexChanged">
+        
+    </asp:DropDownList>
 
+
+    <asp:DropDownList ID="ddlLocalidad" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlProvincia_SelectedIndexChanged">
+    </asp:DropDownList>
 
 
    
@@ -86,22 +93,12 @@
     </div>
  </div>
 
-  <div class="form-group row">
-    <div class="col-sm-2">Checkbox</div>
-    <div class="col-sm-10">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="gridCheck1">
-        <label class="form-check-label" for="gridCheck1">
-          Example checkbox
-        </label>
-      </div>
-    </div>
-  </div>
+
 
 
   <div class="form-group row">
     <div class="col-sm-10">
-      <button type="submit" class="btn btn-primary">Guardar</button>
+      <button type="submit" class="btn btn-primary">Guardar</button> 
     </div>
   </div>
  </div> <%--endform --%>
