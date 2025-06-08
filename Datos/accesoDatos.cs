@@ -81,7 +81,9 @@ namespace Datos
         public Persona GetPersona(Persona p)
         {
             Persona persona = new Persona();
-            string consulta = "SELECT * FROM USUARIOS WHERE usuario_U = @usuario ";
+            //string consulta = "SELECT * FROM USUARIOS WHERE usuario_U = @usuario ";
+            string consulta = "SELECT * FROM USUARIOS AS [U] INNER JOIN LOCALIDADES AS [L] ON U.idLocalidad_U = L.idLocalidad_L INNER JOIN PROVINCIAS AS [P] ON L.idProvincia_L = P.idProvincia_P WHERE U.usuario_U = @usuario ";
+
             SqlCommand comando = new SqlCommand();
             comando.Parameters.AddWithValue("@usuario", p.Username);
             comando.CommandText = consulta;
@@ -97,11 +99,15 @@ namespace Datos
                 persona.Nacionalidad = data["nacionalidad_U"].ToString();
                 persona.FechaNac = data["fechaNac_U"].ToString();
                 persona.IdLocalidad = Convert.ToInt32(data["idLocalidad_U"]);
+                persona.Localidad = data["nombre_L"].ToString();
                 persona.IdProvincia = Convert.ToInt32(data["idProvincia_U"]);
+                persona.Provincia = data["nombre_P"].ToString();
                 persona.Email = data["email_U"].ToString();
                 persona.Telefono = data["telefono_U"].ToString();
                 persona.Username = data["usuario_U"].ToString();
                 persona.Password = data["password_U"].ToString();
+
+
             }
             return persona;
         }

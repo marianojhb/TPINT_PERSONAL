@@ -41,7 +41,7 @@ namespace TPINT_PERSONAL
                 // Busco datos de la persona que se logueó:
                 persona.Username = txtUsuario.Text;
                 persona = negPersona.GetPersona(persona);
-                Session["FullName"] = persona.Nombre;
+                Session["FullName"] = $"{persona.Nombre}";
 
 
                 // Busco el rol de la persona logueada para ver a donde la redirijo
