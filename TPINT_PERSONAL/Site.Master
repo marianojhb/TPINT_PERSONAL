@@ -7,12 +7,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     
     <asp:ContentPlaceHolder ID="head" runat="server"> </asp:ContentPlaceHolder>
+    
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-    <!-- Bootstrap JS (opcional para navbar responsive) -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
    
+    <!-- Bootstrap Datepicker CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Bootstrap Datepicker JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -37,7 +47,8 @@
                     </ul>
                     <!-- Usuario logueado -->
                     <span class="navbar-text text-white">
-                        <asp:Label ID="lblUsuario" runat="server" Text="Usuario: Invitado" />
+                        <asp:Label ID="lblFullName" runat="server" Text="" /> 
+                        (<asp:Label ID="lblUsuario" runat="server" Text="Usuario: Invitado" />) 
                         <asp:LinkButton ID="cerrarSesion" runat="server" Visible="False" OnClick="cerrarSesion_Click">Cerrar Sesión</asp:LinkButton>
                     </span>
                 </div>

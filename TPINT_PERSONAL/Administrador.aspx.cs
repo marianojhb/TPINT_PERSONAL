@@ -13,8 +13,14 @@ namespace TPINT_PERSONAL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            respuesta.Text =  Session["Tipo"]?.ToString() ?? "NULO";
+            
 
+        }
+
+        protected void btnAgregarMedico_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/AgregarMedico.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
         }
     }
 }

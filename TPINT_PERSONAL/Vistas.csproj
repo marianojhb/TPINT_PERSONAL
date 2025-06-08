@@ -68,6 +68,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Administrador.aspx" />
+    <Content Include="AgregarMedico.aspx" />
+    <Content Include="AgregarPaciente.aspx" />
     <Content Include="Inicio.aspx" />
     <Content Include="Medico.aspx" />
     <Content Include="Web.config" />
@@ -79,6 +81,20 @@
     </Compile>
     <Compile Include="Administrador.aspx.designer.cs">
       <DependentUpon>Administrador.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarMedico.aspx.cs">
+      <DependentUpon>AgregarMedico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarMedico.aspx.designer.cs">
+      <DependentUpon>AgregarMedico.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarPaciente.aspx.cs">
+      <DependentUpon>AgregarPaciente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarPaciente.aspx.designer.cs">
+      <DependentUpon>AgregarPaciente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>

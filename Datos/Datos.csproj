@@ -42,7 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoDatos.cs" />
+    <Compile Include="DaoPaciente.cs" />
     <Compile Include="DaoAdministrador.cs" />
+    <Compile Include="DaoPersona.cs" />
     <Compile Include="DaoUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

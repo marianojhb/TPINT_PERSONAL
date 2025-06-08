@@ -13,13 +13,13 @@ namespace TPINT_PERSONAL
         {
             if (!IsPostBack)
             {
-                //lblUsuario.Text = "Usuario: " + (Session["Usuario"] ?? "Invitado");
 
                 string usuario = Session["Usuario"] as string;
 
                 if (!string.IsNullOrEmpty(usuario))
                 {
                     lblUsuario.Text = "Usuario: " + usuario;
+                    lblFullName.Text = Session["FullName"] as string;
                     cerrarSesion.Visible = true;
                 }
                 else
