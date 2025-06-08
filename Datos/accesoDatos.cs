@@ -13,10 +13,11 @@ namespace Datos
     public class AccesoDatos
     {
         private const string cadenaConexion = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=TPINT_PERSONAL;Integrated Security=True;TrustServerCertificate=True";
+        SqlConnection sqlConnection;
 
         public SqlConnection obtenerConexion()
         {
-            SqlConnection sqlConnection = new SqlConnection(cadenaConexion);
+            sqlConnection = new SqlConnection(cadenaConexion);
             try
             {
                 sqlConnection.Open();
@@ -42,10 +43,10 @@ namespace Datos
             }
         }
 
-        private DataTable obtenerTabla(string nombreTabla, string consultaSql)
+        public DataTable ObtenerTabla(string nombreTabla, string consultaSql)
         {
             DataSet ds = new DataSet();
-            SqlConnection sqlConnection = obtenerConexion();
+            sqlConnection = obtenerConexion();
             SqlDataAdapter adapter = obtenerAdaptador(consultaSql, sqlConnection);
             adapter.Fill(ds);
             sqlConnection.Close();
@@ -55,7 +56,7 @@ namespace Datos
         public int ejecutarProcedimientosAlmacenados(SqlCommand comando, string nombreSP)
         {
             int filasCambiadas = 0;
-            SqlConnection sqlConnection = obtenerConexion();
+            sqlConnection = obtenerConexion();
             SqlCommand sqlCommand = new SqlCommand();
             sqlCommand = comando;
             sqlCommand.Connection = sqlConnection;
@@ -75,42 +76,16 @@ namespace Datos
             {
                 estado = true;
             }
+            Conexion.Close();
             return estado;
         }
 
-        public Persona GetPersona(Persona p)
+        public void cerrarConexion()
         {
-            Persona persona = new Persona();
-            //string consulta = "SELECT * FROM USUARIOS WHERE usuario_U = @usuario ";
-            string consulta = "SELECT * FROM USUARIOS AS [U] INNER JOIN LOCALIDADES AS [L] ON U.idLocalidad_U = L.idLocalidad_L INNER JOIN PROVINCIAS AS [P] ON L.idProvincia_L = P.idProvincia_P WHERE U.usuario_U = @usuario ";
-
-            SqlCommand comando = new SqlCommand();
-            comando.Parameters.AddWithValue("@usuario", p.Username);
-            comando.CommandText = consulta;
-            comando.Connection = obtenerConexion();
-            SqlDataReader data = comando.ExecuteReader();
-            if (data.Read())
+            if (sqlConnection != null && sqlConnection.State == System.Data.ConnectionState.Open)
             {
-                persona.Nombre = data["nombre_U"].ToString();
-                persona.Apellido = data["apellido_U"].ToString();
-                persona.DNI = data["dni_U"].ToString();
-                persona.Tipo = data["tipo_U"].ToString();
-                persona.Sexo = data["sexo_U"].ToString()[0];
-                persona.Nacionalidad = data["nacionalidad_U"].ToString();
-                persona.FechaNac = data["fechaNac_U"].ToString();
-                persona.IdLocalidad = Convert.ToInt32(data["idLocalidad_U"]);
-                persona.Localidad = data["nombre_L"].ToString();
-                persona.IdProvincia = Convert.ToInt32(data["idProvincia_U"]);
-                persona.Provincia = data["nombre_P"].ToString();
-                persona.Email = data["email_U"].ToString();
-                persona.Telefono = data["telefono_U"].ToString();
-                persona.Username = data["usuario_U"].ToString();
-                persona.Password = data["password_U"].ToString();
-
-
+                sqlConnection.Close();
             }
-            return persona;
         }
-
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Entidades;
+using Negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,13 +15,42 @@ namespace TPINT_PERSONAL
         {
             if (!IsPostBack)
             {
-                cargarProvincia();
+                cargarProvincias();
+                cargarLocalidades(ddlProvincias.SelectedValue);
             }
         }
-        protected void cargarProvincia()
+        protected void cargarProvincias()
         {
-            
+            {
+                NegocioProvincia negocio = new NegocioProvincia();
+                List<Provincia> provincias = negocio.GetProvincias();
+
+                ddlProvincias.DataSource = provincias;
+                ddlProvincias.DataTextField = "Nombre";
+                ddlProvincias.DataValueField = "idProvincia";
+                ddlProvincias.DataBind();
+
+                ddlProvincias.Items.Insert(0, new ListItem("-- Seleccione una provincia --", "0"));
+            }
+        }
+        protected void cargarLocalidades(string provincia)
+        {
+            {
+                NegocioLocalidad negocioLocalidad = new NegocioLocalidad();
+                List<Localidad> localidades = negocioLocalidad.GetLocalidades(provincia);
+
+                ddlLocalidades.DataSource = localidades;
+                ddlLocalidades.DataTextField = "Nombre";
+                ddlLocalidades.DataValueField = "idLocalidad";
+                ddlLocalidades.DataBind();
+
+                ddlLocalidades.Items.Insert(0, new ListItem("-- Seleccione una localidad --", "0"));
+            }
         }
 
+        protected void ddlProvincias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cargarLocalidades(ddlProvincias.SelectedValue);
+        }
     }
 }

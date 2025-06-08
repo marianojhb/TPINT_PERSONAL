@@ -11,34 +11,43 @@ namespace TPINT_PERSONAL
 {
 
 
-    public partial class AgregarMedico
+    public partial class Login
     {
 
         /// <summary>
-        /// Control ddlProvincias.
+        /// Control txtUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProvincias;
+        protected global::System.Web.UI.WebControls.TextBox txtUsuario;
 
         /// <summary>
-        /// Control ddlLocalidades.
+        /// Control txtPassword.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlLocalidades;
+        protected global::System.Web.UI.WebControls.TextBox txtPassword;
 
         /// <summary>
-        /// Control txtFechaNac.
+        /// Control btnLogin.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFechaNac;
+        protected global::System.Web.UI.WebControls.Button btnLogin;
+
+        /// <summary>
+        /// Control lblError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblError;
     }
 }

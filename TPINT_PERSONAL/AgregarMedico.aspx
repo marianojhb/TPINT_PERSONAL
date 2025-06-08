@@ -26,7 +26,7 @@
 
   <fieldset class="form-group">
     <div class="row">
-      <div>
+     
       <legend class="col-form-label col-sm-4 pt-0">Sexo</legend>
       <div class="col-sm-8">
         <div class="form-check">
@@ -42,7 +42,7 @@
           </label>
         </div>
       </div>
-    </div>
+    
   </fieldset>
 
 
@@ -50,15 +50,19 @@
     <div class="col-sm-8">
         <input type="text" class="form-control" id="txtNacionalidad" placeholder="Nacionalidad">
     </div>
- 
-    <asp:DropDownList ID="ddlProvincia" runat="server" CssClass="form-select" AutoPostBack="True" OnSelectedIndexChanged="ddlProvincia_SelectedIndexChanged">
-        
+
+    <label for="ddlProvincias" class="col-sm-4 col-form-label">Provincia</label>
+    
+    <div class="col-sm-8">
+        <asp:DropDownList ID="ddlProvincias" runat="server" CssClass="form-select" AutoPostBack="True" OnSelectedIndexChanged="ddlProvincias_SelectedIndexChanged" >
     </asp:DropDownList>
+      </div>   
 
-
-    <asp:DropDownList ID="ddlLocalidad" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlProvincia_SelectedIndexChanged">
-    </asp:DropDownList>
-
+    <label for="ddlLocalidades" class="col-sm-4 col-form-label">Localidad</label>
+        <div class="col-sm-8">
+        <asp:DropDownList ID="ddlLocalidades" runat="server" CssClass="form-select" AutoPostBack="true" >
+            </asp:DropDownList>
+        </div>
 
    
 

@@ -71,6 +71,7 @@
     <Content Include="AgregarMedico.aspx" />
     <Content Include="AgregarPaciente.aspx" />
     <Content Include="Inicio.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="Medico.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -102,6 +103,13 @@
     </Compile>
     <Compile Include="Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Medico.aspx.cs">
       <DependentUpon>Medico.aspx</DependentUpon>
