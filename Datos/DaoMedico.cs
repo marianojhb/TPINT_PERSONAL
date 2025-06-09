@@ -32,6 +32,7 @@ namespace Datos
             comando.Parameters.AddWithValue("@HORARIO", m.Horario);
             comando.Parameters.AddWithValue("@USUARIO", m.Username);
             comando.Parameters.AddWithValue("@PASSWORD", m.Password);
+            comando.Parameters.AddWithValue("@IMAGEN", m.Imagen);
 
             string nombreSP = "SP_AGREGARMEDICO";
              

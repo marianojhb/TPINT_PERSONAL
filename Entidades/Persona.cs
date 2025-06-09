@@ -24,5 +24,6 @@ namespace Entidades
         public string Password { get; set; }
         public string Localidad { get; set; }   
         public string Provincia { get; set; }   
+        public string Imagen {  get; set; }
     }
 }

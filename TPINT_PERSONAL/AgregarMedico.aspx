@@ -1,5 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AgregarMedico.aspx.cs" Inherits="TPINT_PERSONAL.AgregarMedico" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+.form-check-input {
+    border: none !important;
+    box-shadow: none;
+}
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
             <h2>Agregar Médico</h2>
@@ -8,6 +14,11 @@
 
 <div class="container" style="max-width: 700px;">
   <div class="form-group row">
+
+    <label for="txtDni" class="col-sm-4 col-form-label">DNI</label>
+    <div class="col-sm-8">
+        <asp:TextBox ID="txtDni" runat="server" CssClass="form-control" placeholder="DNI" />
+    </div>
 
     <label for="txtNombre" class="col-sm-4 col-form-label">Nombre</label>
     <div class="col-sm-8">
@@ -19,13 +30,14 @@
         <asp:TextBox ID="txtApellido" runat="server" CssClass="form-control" placeholder="Apellido" />
     </div>
 
-    <label for="txtDni" class="col-sm-4 col-form-label">DNI</label>
-    <div class="col-sm-8">
-        <asp:TextBox ID="txtDni" runat="server" CssClass="form-control" placeholder="DNI" />
-    </div>
-
   <fieldset class="form-group">
     <div class="row">
+     
+      
+     
+     
+     
+      
      
       <legend class="col-form-label col-sm-4 pt-0">Sexo</legend>
       <div class="col-sm-8">
@@ -43,6 +55,7 @@
         </div>
       </div>
     </div>
+   
   </fieldset>
 
 
@@ -118,20 +131,22 @@
             La contraseña debe tener entre 8 y 20 caracteres, contener letra y números, sin espacios, caracteres especiales o emoji.</small>
     </div>
 
- </div>
+    <label for="txtImagenURL" class="col-sm-4 col-form-label">Imagen</label>
+    <div class="col-sm-8">
+        <asp:FileUpload ID="fuImagenURL" runat="server" CssClass="form-control" />
+    </div>
 
 
-
-
-<div class="form-group row">
-  <div class="col-sm-12 text-center mt-3">
-    <asp:Button ID="btnReset" runat="server" CssClass="btn btn-secondary mx-2" Text="Limpiar" OnClick="btnReset_Click" />
-    <asp:Button ID="btnGuardar" runat="server" CssClass="btn btn-primary mx-2" Text="Guardar" OnClick="btnGuardar_Click" />
-  </div>
+    <%--botones limpiar y guardar--%>
+    <div class="form-group row">
+      <div class="col-sm-12 text-center mt-3">
+        <asp:Button ID="btnReset" runat="server" CssClass="btn btn-secondary mx-2" Text="Limpiar" OnClick="btnReset_Click" />
+        <asp:Button ID="btnGuardar" runat="server" CssClass="btn btn-primary mx-2" Text="Guardar" OnClick="btnGuardar_Click" />
+      </div>
+</div>
 </div>
 
-
- </div> <%--endform --%>
+</div> <%--endform --%>
 
     <script>
     $(document).ready(function () {

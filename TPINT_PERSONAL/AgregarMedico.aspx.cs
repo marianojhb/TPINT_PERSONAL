@@ -13,6 +13,11 @@ namespace TPINT_PERSONAL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if ( Session["Tipo"] == null || (Session["Tipo"].ToString() != "02" && Session["Tipo"].ToString() != "01") )
+            {
+                Response.Redirect("~/Login.aspx");
+            }
+
             if (!IsPostBack)
             {
                 cargarProvincias();
@@ -81,19 +86,20 @@ namespace TPINT_PERSONAL
         {
             
             Medico m = new Medico();
-
             m.DNI = txtDni.Text.Trim();
             m.Nombre = txtNombre.Text.Trim();
             m.Apellido = txtApellido.Text.Trim();
             m.Tipo = "02";
-            
-            string sexoSeleccionado = "";
-            if (rbMasculino.Checked)
-                sexoSeleccionado = "M";
-            else if (rbFemenino.Checked)
-                sexoSeleccionado = "F";
-            m.Sexo = sexoSeleccionado[0];
 
+            // Radio button de Sexo:
+            {
+                string sexoSeleccionado = "";
+                if (rbMasculino.Checked)
+                    sexoSeleccionado = "M";
+                else if (rbFemenino.Checked)
+                    sexoSeleccionado = "F";
+                m.Sexo = sexoSeleccionado[0];
+            }
             m.Email = txtEmail.Text.Trim();
             m.Nacionalidad =  txtNacionalidad.Text.Trim();
             m.FechaNac = txtFechaNac.Text.Trim();
@@ -105,6 +111,7 @@ namespace TPINT_PERSONAL
             m.CodEspecialidad = Convert.ToInt32(ddlEspecialidades.SelectedValue);
             m.Username = txtUsername.Text.Trim();
             m.Password = txtPassword.Text.Trim();
+            m.Imagen = fuImagenURL?.HasFile == true ? "~/imagenes/perfiles/" + fuImagenURL.FileName : m.Imagen; // operador ternario doble
 
             // TODO: CARGAR EN LA BASE DE DATOS
             NegocioMedico negocioMedico = new NegocioMedico();
@@ -119,6 +126,11 @@ namespace TPINT_PERSONAL
 
             }
             
+        }
+
+        protected void btnImagenURL_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -5,4 +5,5 @@
     <h2>Pagina de usuario administrador</h2>
     <asp:Button ID="btnAgregarMedico" runat="server" Text="Agregar Médico" OnClick="btnAgregarMedico_Click" />
     <asp:Label ID="respuesta" runat="server" Text=""></asp:Label>
+
 </asp:Content>

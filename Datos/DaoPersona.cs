@@ -24,9 +24,9 @@ namespace Datos
             SqlDataReader data = comando.ExecuteReader();
             if (data.Read())
             {
+                persona.DNI = data["dni_U"].ToString();
                 persona.Nombre = data["nombre_U"].ToString();
                 persona.Apellido = data["apellido_U"].ToString();
-                persona.DNI = data["dni_U"].ToString();
                 persona.Tipo = data["tipo_U"].ToString();
                 persona.Sexo = data["sexo_U"].ToString()[0];
                 persona.Nacionalidad = data["nacionalidad_U"].ToString();
@@ -39,6 +39,7 @@ namespace Datos
                 persona.Telefono = data["telefono_U"].ToString();
                 persona.Username = data["usuario_U"].ToString();
                 persona.Password = data["password_U"].ToString();
+                persona.Imagen = data["imagen_U"].ToString();
 
 
             }
