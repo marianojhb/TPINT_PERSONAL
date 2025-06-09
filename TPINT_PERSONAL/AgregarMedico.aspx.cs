@@ -17,6 +17,7 @@ namespace TPINT_PERSONAL
             {
                 cargarProvincias();
                 cargarLocalidades(ddlProvincias.SelectedValue);
+                cargarEspecialidades();
             }
         }
         protected void cargarProvincias()
@@ -58,16 +59,45 @@ namespace TPINT_PERSONAL
             ddlProvincias.SelectedValue = "0";
             ddlLocalidades.SelectedValue = "0";
             txtFechaNac.Text = String.Empty;
+            ddlEspecialidades.SelectedValue = "0";
+        }
+
+        protected void cargarEspecialidades()
+        {
+            {
+                NegocioEspecialidad negocio = new NegocioEspecialidad();
+                List<Especialidad> especialidades = negocio.GetEspecialidades();
+
+                ddlEspecialidades.DataSource = especialidades;
+                ddlEspecialidades.DataTextField = "Nombre";
+                ddlEspecialidades.DataValueField = "codEspecialidad";
+                ddlEspecialidades.DataBind();
+
+                ddlEspecialidades.Items.Insert(0, new ListItem("-- Seleccione una especialidad --", "0"));
+            }
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            // Preparo un objeto Medico
-            // El numero de Legajo se genera automáticamente
-
-            Medico medico = new Medico();
-
             
+            Medico m = new Medico();
+
+            m.DNI = txtDni.Text.Trim();
+            m.Nombre = txtNombre.Text.Trim();
+            m.Apellido = txtApellido.Text.Trim();
+            m.Tipo = "02";
+            m.Email = txtEmail.Text.Trim();
+            m.Nacionalidad =  txtNacionalidad.Text.Trim();
+            m.Direccion = txtDireccion.Text.Trim();
+            m.Localidad = ddlLocalidades.SelectedValue;
+            m.Provincia = ddlProvincias.SelectedValue;
+            m.Horario = txtHorario.Text.Trim();
+            m.Telefono = txtTelefono.Text.Trim();
+            m.Especialidad = ddlEspecialidades.SelectedValue;
+            m.Username = txtUsername.Text.Trim();
+            m.Password = txtPassword.Text.Trim();
+
+            // TODO: CARGAR EN LA BASE DE DATOS
         }
     }
 }

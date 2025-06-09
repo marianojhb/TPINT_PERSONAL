@@ -23,13 +23,13 @@ namespace TPINT_PERSONAL
 
             else if (Session["Tipo"].ToString() == "01")
             {
-                Response.Redirect("~/Administrador.aspx", false);
+                Response.Redirect("~/InicioAdministrador.aspx", false);
                 Context.ApplicationInstance.CompleteRequest();
 
             }
             else if (Session["Tipo"].ToString() == "02")
             {
-                Response.Redirect("~/Medico.aspx", false);
+                Response.Redirect("~/InicioMedico.aspx", false);
                 Context.ApplicationInstance.CompleteRequest();
             }
         }

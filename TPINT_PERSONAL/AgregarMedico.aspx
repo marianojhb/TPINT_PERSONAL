@@ -29,20 +29,20 @@
      
       <legend class="col-form-label col-sm-4 pt-0">Sexo</legend>
       <div class="col-sm-8">
-        <div class="form-check">
+        <div class="form-check form-check-inline"">
           <input class="form-check-input" type="radio" name="radioSexo" id="gridMasculino" value="M">
           <label class="form-check-label" for="gridRadios1">
             Masculino
           </label>
         </div>
-        <div class="form-check">
+        <div class="form-check form-check-inline"">
           <input class="form-check-input" type="radio" name="radioSexo" id="gridFemenino" value="F">
           <label class="form-check-label" for="gridRadios2">
             Femenino
           </label>
         </div>
       </div>
-    
+    </div>
   </fieldset>
 
 
@@ -68,10 +68,16 @@
 
             <label for="txtFechaNac"  class="col-sm-4 col-form-label">Fecha de Nacimiento</label>
         <div class="col-sm-8">
-            <asp:TextBox ID="txtFechaNac" runat="server" CssClass="form-control datepicker" placeholder="Fecha de Nacimiento" />
+            <asp:TextBox ID="txtFechaNac" runat="server" CssClass="form-control datepicker" placeholder="Fecha de Nacimiento" style="padding: 7px 12px;"/>
             
         </div>
 
+   
+
+    <label for="txtDireccion" class="col-sm-4 col-form-label">Dirección</label>
+    <div class="col-sm-8">
+        <asp:TextBox ID="txtDireccion" runat="server" CssClass="form-control" placeholder="Calle número y departamento" />
+    </div>
    
 
     <label for="txtEmail" class="col-sm-4 col-form-label">Email</label>
@@ -81,11 +87,24 @@
     </div>
 
 
+
     <label for="txtTelefono" class="col-sm-4 col-form-label">Telefono</label>
     <div class="col-sm-8">
-        <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control datepicker" placeholder="Telefono" />
-
+        <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control" placeholder="Telefono" />
     </div>
+
+    <label for="txtHorario" class="col-sm-4 col-form-label">Horario</label>
+    <div class="col-sm-8">
+        <asp:TextBox ID="txtHorario" runat="server" CssClass="form-control" placeholder="Horario" />
+    </div>
+
+    <label for="ddlEspecialidades" class="col-sm-4 col-form-label">Especialidad</label>
+    
+    <div class="col-sm-8">
+        <asp:DropDownList ID="ddlEspecialidades" runat="server" CssClass="form-select" >
+    </asp:DropDownList>
+      </div>   
+
 
     <label for="txtUsername" class="col-sm-4 col-form-label">Nombre de usuario</label>
     <div class="col-sm-8">
