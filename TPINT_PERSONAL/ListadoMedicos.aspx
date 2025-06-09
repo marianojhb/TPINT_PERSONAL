@@ -48,12 +48,12 @@
                     <asp:TextBox ID="direccion_UTextBox" runat="server" Text='<%# Bind("direccion_U") %>' />
                 </td>
                 <td>
-                    <asp:TextBox ID="nombre_LTextBox" runat="server" Text='<%# Bind("nombre_L") %>' />
+                    <asp:DropDownList ID="ddlLocalidades" runat="server"></asp:DropDownList>
                 </td>
                 <td>
                     <%--<asp:TextBox ID="nombre_PTextBox" runat="server" Text='<%# Bind("nombre_P") %>' />--%>
 
-                    <asp:DropDownList ID="ddlProvincias" runat="server"></asp:DropDownList>
+                    <asp:DropDownList ID="ddlProvincias" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlProvincias_SelectedIndexChanged"></asp:DropDownList>
                 </td>
 <%--                <td>
                     <asp:TextBox ID="idLocalidad_UTextBox" runat="server" Text='<%# Bind("idLocalidad_U") %>' />

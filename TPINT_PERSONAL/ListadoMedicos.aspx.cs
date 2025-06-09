@@ -37,30 +37,78 @@ namespace TPINT_PERSONAL
         {
             if (e.Item.ItemType == ListViewItemType.DataItem)
             {
-                var dataItem = (DataRowView)e.Item.DataItem;
+                var dataItem = (DataRowView)e.Item.DataItem;  // o tu tipo concreto, según la fuente de datos
 
                 DropDownList ddlProvincias = (DropDownList)e.Item.FindControl("ddlProvincias");
+                DropDownList ddlLocalidades = (DropDownList)e.Item.FindControl("ddlLocalidades");
 
-                if (ddlProvincias != null)
+                if (ddlProvincias != null && ddlLocalidades != null)
                 {
-                    // Cargar provincias
                     NegocioProvincia negocioProvincia = new NegocioProvincia();
-                    List<Provincia> provincias = negocioProvincia.GetProvincias();
+                    var provincias = negocioProvincia.GetProvincias();
 
                     ddlProvincias.DataSource = provincias;
                     ddlProvincias.DataTextField = "Nombre";
                     ddlProvincias.DataValueField = "idProvincia";
                     ddlProvincias.DataBind();
 
-                    // Seleccionar valor actual
+                    ddlProvincias.Items.Insert(0, new ListItem("-- Seleccione una provincia --", "0"));
+
+                    // Seleccionar la provincia que tenga el dato actual
                     int idProvinciaActual = Convert.ToInt32(dataItem["idProvincia_U"]);
-                    ListItem item = ddlProvincias.Items.FindByValue(idProvinciaActual.ToString());
-                    if (item != null)
+                    ListItem provinciaSeleccionada = ddlProvincias.Items.FindByValue(idProvinciaActual.ToString());
+                    if (provinciaSeleccionada != null)
                     {
                         ddlProvincias.ClearSelection();
-                        item.Selected = true;
+                        provinciaSeleccionada.Selected = true;
+
+                        // Cargar localidades según la provincia seleccionada
+                        NegocioLocalidad negocioLocalidad = new NegocioLocalidad();
+                        var localidades = negocioLocalidad.GetLocalidades(idProvinciaActual.ToString());
+
+                        ddlLocalidades.DataSource = localidades;
+                        ddlLocalidades.DataTextField = "Nombre";
+                        ddlLocalidades.DataValueField = "idLocalidad";
+                        ddlLocalidades.DataBind();
+
+                        ddlLocalidades.Items.Insert(0, new ListItem("-- Seleccione una localidad --", "0"));
+
+                        // Seleccionar la localidad que tenga el dato actual
+                        int idLocalidadActual = Convert.ToInt32(dataItem["idLocalidad_U"]);
+                        ListItem localidadSeleccionada = ddlLocalidades.Items.FindByValue(idLocalidadActual.ToString());
+                        if (localidadSeleccionada != null)
+                        {
+                            ddlLocalidades.ClearSelection();
+                            localidadSeleccionada.Selected = true;
+                        }
                     }
                 }
+            }
+        }
+        
+        protected void ddlProvincias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DropDownList ddlProvincias = (DropDownList)sender;
+
+            // Obtener el ListViewItem que contiene este dropdown
+            ListViewItem item = (ListViewItem)ddlProvincias.NamingContainer;
+
+            // Encontrar el ddlLocalidades dentro del mismo ítem
+            DropDownList ddlLocalidades = (DropDownList)item.FindControl("ddlLocalidades");
+
+            if (ddlLocalidades != null)
+            {
+                int idProvincia = int.Parse(ddlProvincias.SelectedValue);
+
+                NegocioLocalidad negocioLocalidad = new NegocioLocalidad();
+                var localidades = negocioLocalidad.GetLocalidades(idProvincia.ToString());
+
+                ddlLocalidades.DataSource = localidades;
+                ddlLocalidades.DataTextField = "Nombre";
+                ddlLocalidades.DataValueField = "idLocalidad";
+                ddlLocalidades.DataBind();
+
+                ddlLocalidades.Items.Insert(0, new ListItem("-- Seleccione una localidad --", "0"));
             }
         }
 
