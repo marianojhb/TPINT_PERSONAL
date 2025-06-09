@@ -1,92 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ListadoMedicos.aspx.cs" Inherits="TPINT_PERSONAL.ListadoMedicos" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        th {
+            text-align:center !important;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>LISTADO MEDICOS</h2>
     <asp:Button ID="btnAgregarMedico" runat="server" Text="Agregar Médico" OnClick="btnAgregarMedico_Click" />
-    <asp:ListView ID="lvListadoMedicos" runat="server" DataKeyNames="dni_U,codEspecialidad_E,idLocalidad_L,idProvincia_L,idProvincia_P" DataSourceID="sdsListadoMedicos" OnSelectedIndexChanged="lvListadoMedicos_SelectedIndexChanged">
-        <%--     SE HACE DESDE LA PANTALLA DE ALTA DE MEDICO 
-        <InsertItemTemplate>
-            <tr style="">
-                <td>
-                    <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insertar" />
-                    <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Borrar" />
-                </td>
-                <td>
-                    <asp:TextBox ID="dni_UTextBox" runat="server" Text='<%# Bind("dni_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="nombre_UTextBox" runat="server" Text='<%# Bind("nombre_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="apellido_UTextBox" runat="server" Text='<%# Bind("apellido_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="tipo_UTextBox" runat="server" Text='<%# Bind("tipo_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="usuario_UTextBox" runat="server" Text='<%# Bind("usuario_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="sexo_UTextBox" runat="server" Text='<%# Bind("sexo_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="nacionalidad_UTextBox" runat="server" Text='<%# Bind("nacionalidad_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="fechaNac_UTextBox" runat="server" Text='<%# Bind("fechaNac_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="direccion_UTextBox" runat="server" Text='<%# Bind("direccion_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="idLocalidad_UTextBox" runat="server" Text='<%# Bind("idLocalidad_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="idProvincia_UTextBox" runat="server" Text='<%# Bind("idProvincia_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="email_UTextBox" runat="server" Text='<%# Bind("email_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="telefono_UTextBox" runat="server" Text='<%# Bind("telefono_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="legajo_UTextBox" runat="server" Text='<%# Bind("legajo_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="codEspecialidad_UTextBox" runat="server" Text='<%# Bind("codEspecialidad_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="horario_UTextBox" runat="server" Text='<%# Bind("horario_U") %>' />
-                </td>
-                <td>
-                    <asp:CheckBox ID="estado_UCheckBox" runat="server" Checked='<%# Bind("estado_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="password_UTextBox" runat="server" Text='<%# Bind("password_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="imagen_UTextBox" runat="server" Text='<%# Bind("imagen_U") %>' />
-                </td>
-                <td>&nbsp;</td>
-                <td>
-                    <asp:TextBox ID="nombre_ETextBox" runat="server" Text='<%# Bind("nombre_E") %>' />
-                </td>
-                <td>&nbsp;</td>
-                <td>
-                    <asp:TextBox ID="idProvincia_LTextBox" runat="server" Text='<%# Bind("idProvincia_L") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="nombre_LTextBox" runat="server" Text='<%# Bind("nombre_L") %>' />
-                </td>
-                <td>&nbsp;</td>
-                <td>
-                    <asp:TextBox ID="nombre_PTextBox" runat="server" Text='<%# Bind("nombre_P") %>' />
-                </td>
-            </tr>
-        </InsertItemTemplate>--%>
-
+    <asp:ListView ID="lvListadoMedicos" runat="server" DataKeyNames="dni_U,codEspecialidad_E,idLocalidad_L,idProvincia_L,idProvincia_P" DataSourceID="sdsListadoMedicos" OnSelectedIndexChanged="lvListadoMedicos_SelectedIndexChanged" OnItemDataBound="lvListadoMedicos_ItemDataBound">
         <EditItemTemplate>
             <tr style="">
                 <td>
@@ -109,9 +32,6 @@
                     <asp:TextBox ID="tipo_UTextBox" runat="server" Text='<%# Bind("tipo_U") %>' />
                 </td>
                 <td>
-                    <asp:TextBox ID="usuario_UTextBox" runat="server" Text='<%# Bind("usuario_U") %>' />
-                </td>
-                <td>
                     <%--<asp:TextBox ID="sexo_UTextBox" runat="server" Text='<%# Bind("sexo_U") %>' />--%>
                     <asp:DropDownList ID="ddlSexo" runat="server"  Text='<%# Bind("sexo_U") %>'>
                         <asp:ListItem Value="M">Masculino</asp:ListItem>
@@ -126,6 +46,14 @@
                 </td>
                 <td>
                     <asp:TextBox ID="direccion_UTextBox" runat="server" Text='<%# Bind("direccion_U") %>' />
+                </td>
+                <td>
+                    <asp:TextBox ID="nombre_LTextBox" runat="server" Text='<%# Bind("nombre_L") %>' />
+                </td>
+                <td>
+                    <%--<asp:TextBox ID="nombre_PTextBox" runat="server" Text='<%# Bind("nombre_P") %>' />--%>
+
+                    <asp:DropDownList ID="ddlProvincias" runat="server"></asp:DropDownList>
                 </td>
 <%--                <td>
                     <asp:TextBox ID="idLocalidad_UTextBox" runat="server" Text='<%# Bind("idLocalidad_U") %>' />
@@ -148,32 +76,29 @@
                 <td>
                     <asp:TextBox ID="horario_UTextBox" runat="server" Text='<%# Bind("horario_U") %>' />
                 </td>
-                <td>
-                    <asp:CheckBox ID="estado_UCheckBox" runat="server" Checked='<%# Bind("estado_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="password_UTextBox" runat="server" Text='<%# Bind("password_U") %>' />
-                </td>
-<%--                <td>
+<%--            <td>
                     <asp:Label ID="codEspecialidad_ELabel1" runat="server" Text='<%# Eval("codEspecialidad_E") %>' />
+                </td>--%>
+ <%--           <td>
+                    <asp:Label ID="idLocalidad_LLabel1" runat="server" Text='<%# Eval("idLocalidad_L") %>' />
+                </td>
+                <td>
+                    <asp:Label ID="idProvincia_LLabel1" runat="server" Text='<%# Eval("idProvincia_L") %>' />
+                </td>--%>
+<%--                <td>
+                    <asp:Label ID="idProvincia_PLabel1" runat="server" Text='<%# Eval("idProvincia_P") %>' />
                 </td>--%>
                 <td>
                     <asp:TextBox ID="nombre_ETextBox" runat="server" Text='<%# Bind("nombre_E") %>' />
                 </td>
                 <td>
-<%--                    <asp:Label ID="idLocalidad_LLabel1" runat="server" Text='<%# Eval("idLocalidad_L") %>' />
+                    <asp:TextBox ID="usuario_UTextBox" runat="server" Text='<%# Bind("usuario_U") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="idProvincia_LLabel1" runat="server" Text='<%# Eval("idProvincia_L") %>' />
-                </td>--%>
-                <td>
-                    <asp:TextBox ID="nombre_LTextBox" runat="server" Text='<%# Bind("nombre_L") %>' />
+                    <asp:TextBox ID="password_UTextBox" runat="server" Text='<%# Bind("password_U") %>' />
                 </td>
-<%--                <td>
-                    <asp:Label ID="idProvincia_PLabel1" runat="server" Text='<%# Eval("idProvincia_P") %>' />
-                </td>--%>
                 <td>
-                    <asp:TextBox ID="nombre_PTextBox" runat="server" Text='<%# Bind("nombre_P") %>' />
+                    <asp:CheckBox ID="estado_UCheckBox" runat="server" Checked='<%# Bind("estado_U") %>' />
                 </td>
             </tr>
         </EditItemTemplate>
@@ -272,8 +197,8 @@
                     <asp:Button ID="EditButton" runat="server" CommandName="Edit" Text="Editar" />
                 </td>
                 <td>
-                    <img src='<%# Eval("imagen_U") %>' width="50" /> <br />  
-                    <asp:Label ID="imagen_ULabel" runat="server" Text='<%# Eval("imagen_U") %>' />
+                    <img src='<%# Eval("imagen_U") %>' width="50" class="img-fluid rounded-circle"/> <br />  
+                    
                 </td>
                 <td>
                     <asp:Label ID="dni_ULabel" runat="server" Text='<%# Eval("dni_U") %>' />
@@ -288,19 +213,22 @@
                     <asp:Label ID="tipo_ULabel" runat="server" Text='<%# Eval("tipo_U") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="usuario_ULabel" runat="server" Text='<%# Eval("usuario_U") %>' />
-                </td>
-                <td>
                     <asp:Label ID="sexo_ULabel" runat="server" Text='<%# Eval("sexo_U") %>' />
                 </td>
                 <td>
                     <asp:Label ID="nacionalidad_ULabel" runat="server" Text='<%# Eval("nacionalidad_U") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="fechaNac_ULabel" runat="server" Text='<%# Eval("fechaNac_U") %>' />
+                    <asp:Label ID="fechaNac_ULabel" runat="server" Text='<%# Eval("fechaNac_U", "{0:dd/MM/yyyy}") %>' />
                 </td>
                 <td>
                     <asp:Label ID="direccion_ULabel" runat="server" Text='<%# Eval("direccion_U") %>' />
+                </td>
+                <td>
+                    <asp:Label ID="nombre_LLabel" runat="server" Text='<%# Eval("nombre_L") %>' />
+                </td>
+                <td>
+                    <asp:Label ID="nombre_PLabel" runat="server" Text='<%# Eval("nombre_P") %>' />
                 </td>
 <%--            <td>
                     <asp:Label ID="idLocalidad_ULabel" runat="server" Text='<%# Eval("idLocalidad_U") %>' />
@@ -323,12 +251,6 @@
                 <td>
                     <asp:Label ID="horario_ULabel" runat="server" Text='<%# Eval("horario_U") %>' />
                 </td>
-                <td>
-                    <asp:CheckBox ID="estado_UCheckBox" runat="server" Checked='<%# Eval("estado_U") %>' Enabled="false" />
-                </td>
-                <td>
-                    <asp:Label ID="password_ULabel" runat="server" Text='<%# Eval("password_U") %>' />
-                </td>
 <%--                <td>
                     <asp:Label ID="codEspecialidad_ELabel" runat="server" Text='<%# Eval("codEspecialidad_E") %>' />
                 </td>--%>
@@ -341,69 +263,59 @@
                 <td>
                     <asp:Label ID="idProvincia_LLabel" runat="server" Text='<%# Eval("idProvincia_L") %>' />
                 </td>--%>
-                <td>
-                    <asp:Label ID="nombre_LLabel" runat="server" Text='<%# Eval("nombre_L") %>' />
-                </td>
 <%--                <td>
                     <asp:Label ID="idProvincia_PLabel" runat="server" Text='<%# Eval("idProvincia_P") %>' />
                 </td>--%>
                 <td>
-                    <asp:Label ID="nombre_PLabel" runat="server" Text='<%# Eval("nombre_P") %>' />
+                    <asp:Label ID="usuario_ULabel" runat="server" Text='<%# Eval("usuario_U") %>' />
+                </td>
+                <td>
+                    <asp:Label ID="password_ULabel" runat="server" Text='<%# Eval("password_U") %>' />
+                </td>
+                <td>
+                    <asp:CheckBox ID="estado_UCheckBox" runat="server" Checked='<%# Eval("estado_U") %>' Enabled="false" />
                 </td>
             </tr>
         </ItemTemplate>
-        <LayoutTemplate>
-            <table runat="server" class="table table-bordered">
-                <tr runat="server">
-                    <td runat="server"> 
-                        <table id="itemPlaceholderContainer" runat="server" CssClass="table table-bordered" border="0" style="">
-                        <thead>
-                            <tr id="itemPlaceholder" runat="server" style="">
-                                <th runat="server"></th>
-                                <th runat="server">imagen_U</th>
-                                <th runat="server">dni_U</th>
-                                <th runat="server">nombre_U</th>
-                                <th runat="server">apellido_U</th>
-                                <th runat="server">tipo_U</th>
-                                <th runat="server">usuario_U</th>
-                                <th runat="server">sexo_U</th>
-                                <th runat="server">nacionalidad_U</th>
-                                <th runat="server">fechaNac_U</th>
-                                <th runat="server">direccion_U</th>
-                                <%--<th runat="server">idLocalidad_U</th>--%>
-                                <%--<th runat="server">idProvincia_U</th>--%>
-                                <th runat="server">email_U</th>
-                                <th runat="server">telefono_U</th>
-                                <th runat="server">legajo_U</th>
-                                <%--<th runat="server">codEspecialidad_U</th>--%>
-                                <th runat="server">horario_U</th>
-                                <th runat="server">estado_U</th>
-                                <th runat="server">password_U</th>
-                                <%--<th runat="server">codEspecialidad_E</th>--%>
-                                <th runat="server">nombre_E</th>
-                                <%--<th runat="server">idLocalidad_L</th>--%>
-                                <%--<th runat="server">idProvincia_L</th>--%>
-                                <th runat="server">nombre_L</th>
-                                <%--<th runat="server">idProvincia_P</th>--%>
-                                <th runat="server">nombre_P</th>
-                            </tr>
-                            <tr runat="server" style="">
-                            </tr>
-                        </thead>
-                        </table>
-                    </td>
+    <LayoutTemplate>
+        <table runat="server" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Acciones</th>
+                    <th>Imagen</th>
+                    <th>DNI</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Tipo</th>
+                    <th>Sexo</th>
+                    <th>Nacionalidad</th>
+                    <th>Fecha de<br />
+                        Nacimiento</th>
+                    <th>Dirección</th>
+                    <th>Localidad</th>
+                    <th>Provincia</th>
+                    <th>Email</th>
+                    <th>Teléfono</th>
+                    <th>Legajo</th>
+                    <th>Horario</th>
+                    <th>Especialidad</th>
+                    <th>Usuario</th>
+                    <th>Contraseña</th>
+                    <th>Estado</th>
                 </tr>
-                <tr runat="server">
-                    <td runat="server" style="">
-                        <asp:DataPager ID="DataPager1" runat="server">
-                            <Fields>
-                                <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True" />
-                            </Fields>
-                        </asp:DataPager>
-                    </td>
-                </tr>
-            </table>
-        </LayoutTemplate>
+            </thead>
+            <tbody>
+                <tr runat="server" id="itemPlaceholder"></tr>
+            </tbody>
+        </table>
+        <asp:DataPager ID="DataPager1" runat="server">
+            <Fields>
+                <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True" />
+            </Fields>
+        </asp:DataPager>
+    </LayoutTemplate>
+
+
         <SelectedItemTemplate>
             <tr style="">
                 <td>

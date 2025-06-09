@@ -13,10 +13,15 @@ namespace TPINT_PERSONAL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                if (Session["Tipo"] == null || Session["Tipo"].ToString() != "01")
+                {
+                    Response.Redirect("~/Login.aspx");
+                }
 
-
+            }
         }
-
         protected void btnAgregarMedico_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/AgregarMedico.aspx", false);

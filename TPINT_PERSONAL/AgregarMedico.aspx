@@ -33,12 +33,6 @@
   <fieldset class="form-group">
     <div class="row">
      
-      
-     
-     
-     
-      
-     
       <legend class="col-form-label col-sm-4 pt-0">Sexo</legend>
       <div class="col-sm-8">
         <div class="form-check form-check-inline">
