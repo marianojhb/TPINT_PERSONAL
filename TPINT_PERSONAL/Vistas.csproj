@@ -72,6 +72,8 @@
     <Content Include="AgregarPaciente.aspx" />
     <Content Include="Inicio.aspx" />
     <Content Include="ListadoMedicos.aspx" />
+    <Content Include="ListadoPacientes.aspx" />
+    <Content Include="ListadoTurnos.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="InicioMedico.aspx" />
     <Content Include="Web.config" />
@@ -111,6 +113,20 @@
     </Compile>
     <Compile Include="ListadoMedicos.aspx.designer.cs">
       <DependentUpon>ListadoMedicos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListadoPacientes.aspx.cs">
+      <DependentUpon>ListadoPacientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListadoPacientes.aspx.designer.cs">
+      <DependentUpon>ListadoPacientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListadoTurnos.aspx.cs">
+      <DependentUpon>ListadoTurnos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListadoTurnos.aspx.designer.cs">
+      <DependentUpon>ListadoTurnos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

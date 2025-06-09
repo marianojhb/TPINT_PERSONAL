@@ -15,6 +15,15 @@ namespace TPINT_PERSONAL
     {
 
         /// <summary>
+        /// Control htmlTag.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlElement htmlTag;
+
+        /// <summary>
         /// Control head.
         /// </summary>
         /// <remarks>
@@ -58,6 +67,15 @@ namespace TPINT_PERSONAL
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton cerrarSesion;
+
+        /// <summary>
+        /// Control cambiarTema.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton cambiarTema;
 
         /// <summary>
         /// Control MainContent.

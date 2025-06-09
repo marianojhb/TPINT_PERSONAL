@@ -43,14 +43,14 @@ namespace Datos
             }
         }
 
-        public DataTable ObtenerTabla(string nombreTabla, string consultaSql)
+        public DataTable ObtenerTabla(string consultaSql)
         {
             DataSet ds = new DataSet();
             sqlConnection = obtenerConexion();
             SqlDataAdapter adapter = obtenerAdaptador(consultaSql, sqlConnection);
             adapter.Fill(ds);
             sqlConnection.Close();
-            return ds.Tables[nombreTabla];
+            return ds.Tables[0];
         }
 
         public int ejecutarProcedimientosAlmacenados(SqlCommand comando, string nombreSP)

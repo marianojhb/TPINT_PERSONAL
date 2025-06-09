@@ -11,9 +11,13 @@ namespace TPINT_PERSONAL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+
             if (!IsPostBack)
             {
+               
 
+                
                 string usuario = Session["Usuario"] as string;
 
                 if (!string.IsNullOrEmpty(usuario))
@@ -27,7 +31,14 @@ namespace TPINT_PERSONAL
                     lblUsuario.Text = "Usuario: Invitado";
                     cerrarSesion.Visible = false;
                 }
-
+                string tema = Session["tema"] as string ?? "light";
+                htmlTag.Attributes["data-bs-theme"] = tema;
+            }
+            else
+            {
+                // Siempre aplicamos el tema en cada carga/postback
+                string tema = Session["tema"] as string ?? "light";
+                htmlTag.Attributes["data-bs-theme"] = tema;
             }
 
         }
@@ -37,6 +48,14 @@ namespace TPINT_PERSONAL
             Session["Usuario"] = String.Empty;
             cerrarSesion.Visible = true;
             Response.Redirect("~/Inicio.aspx");
+        }
+
+        protected void cambiarTema_Click(object sender, EventArgs e)
+        {
+            string temaActual = Session["tema"] as string ?? "light";
+            string nuevoTema = (temaActual == "dark") ? "light" : "dark";
+            Session["tema"] = nuevoTema;
+            htmlTag.Attributes["data-bs-theme"] = nuevoTema;
         }
     }
 }

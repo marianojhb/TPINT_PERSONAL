@@ -193,8 +193,9 @@
         <ItemTemplate>
             <tr style="">
                 <td>
-                    <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Eliminar" />
-                    <asp:Button ID="EditButton" runat="server" CommandName="Edit" Text="Editar" />
+                    <asp:LinkButton ID="DeleteButton" runat="server" CssClass="btn btn-danger" CommandName="Delete" >Eliminar</asp:LinkButton>
+                    <asp:LinkButton ID="EditButton" runat="server" CssClass="btn btn-secondary" CommandName="Edit" >Editar</asp:LinkButton>
+                    
                 </td>
                 <td>
                     <img src='<%# Eval("imagen_U") %>' width="50" class="img-fluid rounded-circle"/> <br />  
