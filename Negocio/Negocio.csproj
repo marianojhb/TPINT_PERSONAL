@@ -45,6 +45,7 @@
     <Compile Include="NegocioEspecialidad.cs" />
     <Compile Include="NegocioLocalidad.cs" />
     <Compile Include="NegocioLogin.cs" />
+    <Compile Include="NegocioMedico.cs" />
     <Compile Include="NegocioPaciente.cs" />
     <Compile Include="NegocioPersona.cs" />
     <Compile Include="NegocioProvincia.cs" />

@@ -29,15 +29,15 @@
      
       <legend class="col-form-label col-sm-4 pt-0">Sexo</legend>
       <div class="col-sm-8">
-        <div class="form-check form-check-inline"">
-          <input class="form-check-input" type="radio" name="radioSexo" id="gridMasculino" value="M">
-          <label class="form-check-label" for="gridRadios1">
+        <div class="form-check form-check-inline">
+            <asp:RadioButton ID="rbMasculino" CssClass="form-check-input" GroupName="Sexo" value="M" Text="Masculino" runat="server" />
+          <label class="form-check-label" for="rbMasculino">
             Masculino
           </label>
         </div>
-        <div class="form-check form-check-inline"">
-          <input class="form-check-input" type="radio" name="radioSexo" id="gridFemenino" value="F">
-          <label class="form-check-label" for="gridRadios2">
+        <div class="form-check form-check-inline">
+            <asp:RadioButton ID="rbFemenino" CssClass="form-check-input" GroupName="Sexo" value="F" Text="Femenino" runat="server" />
+            <label class="form-check-label" for="rbFemenino">
             Femenino
           </label>
         </div>

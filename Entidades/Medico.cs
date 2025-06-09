@@ -11,7 +11,7 @@ namespace Entidades
         public string Username {  get; set; }
         public string Password { get; set; }
         public string Legajo { get; set; }  
-        public int idEspecialidad {  get; set; }
+        public int CodEspecialidad {  get; set; }
         public string Especialidad {  get; set; }
         public string Horario { get; set; }
         public bool Estado {  get; set; }

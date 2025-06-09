@@ -23,8 +23,8 @@ namespace TPINT_PERSONAL
         protected void cargarProvincias()
         {
             {
-                NegocioProvincia negocio = new NegocioProvincia();
-                List<Provincia> provincias = negocio.GetProvincias();
+                NegocioProvincia negocioProvincia = new NegocioProvincia();
+                List<Provincia> provincias = negocioProvincia.GetProvincias();
 
                 ddlProvincias.DataSource = provincias;
                 ddlProvincias.DataTextField = "Nombre";
@@ -65,8 +65,8 @@ namespace TPINT_PERSONAL
         protected void cargarEspecialidades()
         {
             {
-                NegocioEspecialidad negocio = new NegocioEspecialidad();
-                List<Especialidad> especialidades = negocio.GetEspecialidades();
+                NegocioEspecialidad negocioEspecialidad = new NegocioEspecialidad();
+                List<Especialidad> especialidades = negocioEspecialidad.GetEspecialidades();
 
                 ddlEspecialidades.DataSource = especialidades;
                 ddlEspecialidades.DataTextField = "Nombre";
@@ -86,18 +86,39 @@ namespace TPINT_PERSONAL
             m.Nombre = txtNombre.Text.Trim();
             m.Apellido = txtApellido.Text.Trim();
             m.Tipo = "02";
+            
+            string sexoSeleccionado = "";
+            if (rbMasculino.Checked)
+                sexoSeleccionado = "M";
+            else if (rbFemenino.Checked)
+                sexoSeleccionado = "F";
+            m.Sexo = sexoSeleccionado[0];
+
             m.Email = txtEmail.Text.Trim();
             m.Nacionalidad =  txtNacionalidad.Text.Trim();
+            m.FechaNac = txtFechaNac.Text.Trim();
             m.Direccion = txtDireccion.Text.Trim();
-            m.Localidad = ddlLocalidades.SelectedValue;
-            m.Provincia = ddlProvincias.SelectedValue;
+            m.IdLocalidad = Convert.ToInt32(ddlLocalidades.SelectedValue);
+            m.IdProvincia = Convert.ToInt32(ddlProvincias.SelectedValue);
             m.Horario = txtHorario.Text.Trim();
             m.Telefono = txtTelefono.Text.Trim();
-            m.Especialidad = ddlEspecialidades.SelectedValue;
+            m.CodEspecialidad = Convert.ToInt32(ddlEspecialidades.SelectedValue);
             m.Username = txtUsername.Text.Trim();
             m.Password = txtPassword.Text.Trim();
 
             // TODO: CARGAR EN LA BASE DE DATOS
+            NegocioMedico negocioMedico = new NegocioMedico();
+            int insercionOK = negocioMedico.AgregarMedico(m);
+
+            if (insercionOK == 1)
+            {
+                Response.Redirect("ListadoMedicos.aspx");
+            }
+            else
+            {
+
+            }
+            
         }
     }
 }
