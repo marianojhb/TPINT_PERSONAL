@@ -61,10 +61,23 @@ namespace TPINT_PERSONAL
 
         protected void btnReset_Click(object sender, EventArgs e)
         {
+            txtDni.Text = String.Empty;
+            txtNombre.Text = String.Empty;
+            txtApellido.Text = String.Empty;
+            txtEmail.Text = String.Empty;
+            txtTelefono.Text = String.Empty;
+            txtNacionalidad.Text = String.Empty;
+            txtFechaNac.Text = String.Empty;
+            txtHorario.Text = String.Empty; 
+            ddlEspecialidades.SelectedValue = "0";
+            rbMasculino.Checked = false;
+            rbFemenino.Checked = false;
+            txtDireccion.Text = String.Empty;
             ddlProvincias.SelectedValue = "0";
             ddlLocalidades.SelectedValue = "0";
-            txtFechaNac.Text = String.Empty;
-            ddlEspecialidades.SelectedValue = "0";
+            txtUsername.Text = String.Empty;
+            txtPassword.Text = String.Empty;    
+            
         }
 
         protected void cargarEspecialidades()
@@ -126,11 +139,6 @@ namespace TPINT_PERSONAL
 
             }
             
-        }
-
-        protected void btnImagenURL_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

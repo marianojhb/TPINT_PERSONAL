@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AgregarMedico.aspx.cs" Inherits="TPINT_PERSONAL.AgregarMedico" %>
+﻿<%@ Page Title="Agregar médico | Clínica TUP" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AgregarMedico.aspx.cs" Inherits="TPINT_PERSONAL.AgregarMedico" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
 .form-check-input {
@@ -32,10 +32,7 @@
 
   <fieldset class="form-group">
     <div class="row">
-     
-      
-     
-      <legend class="col-form-label col-sm-4 pt-0">Sexo</legend>
+      <label class="col-form-label col-sm-4 pt-0">Sexo</label>
       <div class="col-sm-8">
         <div class="form-check form-check-inline">
             <asp:RadioButton ID="rbMasculino" CssClass="form-check-input" GroupName="Sexo" value="M" Text="Masculino" runat="server" />

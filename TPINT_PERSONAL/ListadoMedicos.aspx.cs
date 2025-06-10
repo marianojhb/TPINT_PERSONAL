@@ -20,6 +20,7 @@ namespace TPINT_PERSONAL
                 {
                     Response.Redirect("~/Login.aspx");
                 }
+                MostrarBotonAgregarMedico();
             }
         }
         protected void btnAgregarMedico_Click(object sender, EventArgs e)
@@ -112,6 +113,13 @@ namespace TPINT_PERSONAL
             }
         }
 
+        protected void MostrarBotonAgregarMedico()
+        {
+            if (Session["Tipo"].ToString() == "01")
+            {
+                btnAgregarMedico.Visible = true;
+            }
+        }
 
     }
 

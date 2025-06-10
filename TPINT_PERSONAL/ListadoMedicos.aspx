@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ListadoMedicos.aspx.cs" Inherits="TPINT_PERSONAL.ListadoMedicos" %>
+﻿<%@ Page Title="Listado de Médicos | TUP" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ListadoMedicos.aspx.cs" Inherits="TPINT_PERSONAL.ListadoMedicos" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
         th {
@@ -8,7 +8,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>LISTADO MEDICOS</h2>
-    <asp:Button ID="btnAgregarMedico" runat="server" Text="Agregar Médico" OnClick="btnAgregarMedico_Click" />
+    <asp:Button ID="btnAgregarMedico" runat="server" Text="Agregar Médico" OnClick="btnAgregarMedico_Click" Visible="False" />
     <asp:ListView ID="lvListadoMedicos" runat="server" DataKeyNames="dni_U,codEspecialidad_E,idLocalidad_L,idProvincia_L,idProvincia_P" DataSourceID="sdsListadoMedicos" OnSelectedIndexChanged="lvListadoMedicos_SelectedIndexChanged" OnItemDataBound="lvListadoMedicos_ItemDataBound">
         <EditItemTemplate>
             <tr style="">
@@ -109,86 +109,6 @@
                 </tr>
             </table>
         </EmptyDataTemplate>
-        <%--<InsertItemTemplate>
-            <tr style="">
-                <td>
-                    <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insertar" />
-                    <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Borrar" />
-                </td>
-                <td>
-                    <asp:TextBox ID="dni_UTextBox" runat="server" Text='<%# Bind("dni_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="nombre_UTextBox" runat="server" Text='<%# Bind("nombre_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="apellido_UTextBox" runat="server" Text='<%# Bind("apellido_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="tipo_UTextBox" runat="server" Text='<%# Bind("tipo_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="usuario_UTextBox" runat="server" Text='<%# Bind("usuario_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="sexo_UTextBox" runat="server" Text='<%# Bind("sexo_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="nacionalidad_UTextBox" runat="server" Text='<%# Bind("nacionalidad_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="fechaNac_UTextBox" runat="server" Text='<%# Bind("fechaNac_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="direccion_UTextBox" runat="server" Text='<%# Bind("direccion_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="idLocalidad_UTextBox" runat="server" Text='<%# Bind("idLocalidad_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="idProvincia_UTextBox" runat="server" Text='<%# Bind("idProvincia_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="email_UTextBox" runat="server" Text='<%# Bind("email_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="telefono_UTextBox" runat="server" Text='<%# Bind("telefono_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="legajo_UTextBox" runat="server" Text='<%# Bind("legajo_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="codEspecialidad_UTextBox" runat="server" Text='<%# Bind("codEspecialidad_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="horario_UTextBox" runat="server" Text='<%# Bind("horario_U") %>' />
-                </td>
-                <td>
-                    <asp:CheckBox ID="estado_UCheckBox" runat="server" Checked='<%# Bind("estado_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="password_UTextBox" runat="server" Text='<%# Bind("password_U") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="imagen_UTextBox" runat="server" Text='<%# Bind("imagen_U") %>' />
-                </td>
-                <td>&nbsp;</td>
-                <td>
-                    <asp:TextBox ID="nombre_ETextBox" runat="server" Text='<%# Bind("nombre_E") %>' />
-                </td>
-                <td>&nbsp;</td>
-                <td>
-                    <asp:TextBox ID="idProvincia_LTextBox" runat="server" Text='<%# Bind("idProvincia_L") %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="nombre_LTextBox" runat="server" Text='<%# Bind("nombre_L") %>' />
-                </td>
-                <td>&nbsp;</td>
-                <td>
-                    <asp:TextBox ID="nombre_PTextBox" runat="server" Text='<%# Bind("nombre_P") %>' />
-                </td>
-            </tr>
-        </InsertItemTemplate>--%>
 
         <ItemTemplate>
             <tr style="">

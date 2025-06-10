@@ -2,10 +2,10 @@
 
 <!DOCTYPE html>
 
-<html runat="server" id="htmlTag">
+<html runat="server" id="htmlTag" lang="es" data-bs-theme="">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Clínica TUP</title>
     <asp:ContentPlaceHolder ID="head" runat="server"> </asp:ContentPlaceHolder>
     
     <!-- Bootstrap CSS -->
@@ -38,6 +38,7 @@
             text-decoration: underline;
         }
     </style>
+
 </head>
 <body>
     <form id="form1" runat="server">
